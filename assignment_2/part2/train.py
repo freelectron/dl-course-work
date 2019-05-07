@@ -106,6 +106,9 @@ def train(config):
     epoch = 0
     steps_total = 0
 
+    text_greedy_generated = dict()
+    text_random_generated = dict()
+
     while steps_total < config.train_steps:
         epoch += 1
         for step, (X_transposed, y_transposed) in enumerate(data_loader):
@@ -139,9 +142,6 @@ def train(config):
 
             loss_list.append(loss)
             accuracy_list.append(accuracy)
-
-            text_greedy_generated = dict()
-            text_random_generated = dict()
 
             if step % config.print_every == 0:
 
@@ -193,13 +193,13 @@ if __name__ == "__main__":
     parser.add_argument('--learning_rate_step', type=int, default=5000, help='Learning rate step')
     parser.add_argument('--dropout_keep_prob', type=float, default=1.0, help='Dropout keep probability')
 
-    parser.add_argument('--train_steps', type=int, default=1e4, help='Number of training steps')
+    parser.add_argument('--train_steps', type=int, default=100, help='Number of training steps')
     parser.add_argument('--max_norm', type=float, default=5.0, help='--')
 
     # Misc params
     parser.add_argument('--summary_path', type=str, default="./summaries/", help='Output path for summaries')
     parser.add_argument('--print_every', type=int, default=20, help='How often to print training progress')
-    parser.add_argument('--sample_every', type=int, default=200, help='How often to sample from the model')
+    parser.add_argument('--sample_every', type=int, default=20, help='How often to sample from the model')
 
     config = parser.parse_args()
 

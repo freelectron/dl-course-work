@@ -127,6 +127,10 @@ dict_text_greedy_2 = pickle.load(open("./temp_2/LSTMgen_text_greedy.p", "rb"))
 dict_text_random_2 = pickle.load(open("./temp_2/LSTMGgen_text_random.p", "rb"))
 
 
+dict_text_greedy_test = pickle.load(open("../LSTMgen_text_greedy.p", "rb"))
+dict_text_random_test = pickle.load(open("../LSTMGgen_text_random.p", "rb"))
+
+
 plt.style.use('ggplot')
 fig, ax = plt.subplots()
 
@@ -136,7 +140,7 @@ ax.plot(range(len(list_acc)), list_acc, alpha=0.5, label='mean_accuracy_over_200
 ax.set_title('LSTM gen: Accuracy')
 ax.legend(loc='lower right', prop={'size': 10})
 ax.set_ylabel("Accuracy")
-ax.set_xlabel("Iteration x50")
+ax.set_xlabel("Iteration x100")
 
 plt.show()
 fig.savefig(date_time + 'LSTMgenAccuracyPlot.png')
@@ -149,7 +153,7 @@ ax.plot(range(len(list_loss)), list_loss, alpha=0.7, color='b', label='mean_loss
 ax.set_title('LSTM gen: Loss')
 ax.legend(loc='upper right', prop={'size': 10})
 ax.set_ylabel("Loss")
-ax.set_xlabel("Iteration x50")
+ax.set_xlabel("Iteration x100")
 
 plt.show()
 fig.savefig(date_time + 'LSTMgenLossPlot.png')
